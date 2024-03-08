@@ -13,12 +13,6 @@ const BattleContainer = () => {
         setShips(generateShips());
     }, []);
 
-    // useEffect(() => {
-    //     if (isFinish && typeof window !== 'undefined') {
-    //         window.alert(`Game Finished! steps: ${step}`);
-    //     }
-    // }, [isFinish])
-
     useEffect(() => {
         if (isFinish) {
             setTimeout(() => {
@@ -60,7 +54,7 @@ const BattleContainer = () => {
         <div className="container mx-auto py-5 flex flex-col items-center">
             <p className="text-4xl text-left w-full">Battle Ship</p>
             <div className="flex gap-24 mt-20 self-start pl-48">
-                <div className="flex">
+                <div data-testid="gridcell" className="flex">
                     <div className="grid grid-cols-1 w-fit">
                         {(new Array(11).fill(0)).map((value, index) => (
                             <div className="w-10 h-10 flex items-center justify-center" key={`col-id-${index}`}>

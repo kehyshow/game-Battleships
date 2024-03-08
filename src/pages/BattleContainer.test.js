@@ -3,42 +3,50 @@ import '@testing-library/jest-dom';
 import BattleContainer from './BattleContainer';
 
 jest.spyOn(window, 'alert').mockImplementation(() => {});
+
 describe('BattleContainer Component', () => {
     test('renders correctly', async () => {
-        const { getByTestId, getAllByRole } = render(<BattleContainer />);
+        render(<BattleContainer />);
 
-        expect(getByTestId("steps")).toBeInTheDocument();
-        expect(getByTestId("reset_btn")).toBeInTheDocument();
-        const gridCells = getAllByRole('gridcell');
-        expect(gridCells.length).toBe(100);
-    });
-    test('finish the game when find all ships', () => {
-        const { getByTestId, getAllByRole } = render(<BattleContainer />);
-
-        const gridcells = getAllByRole('gridcell');
-        for (let i = 0; i < gridcells.length; i++) {
-            fireEvent.click(gridcells[i]);
-        }
-        expect(getByTestId('finish')).toHaveTextContent('finish');
-
+        // wait for the game to render
+        await waitFor(() => {
+            expect(screen.getByTestId('steps')).toBeInTheDocument();
+            expect(screen.getByTestId('reset_btn')).toBeInTheDocument();
+            expect(screen.getByTestId('gridcell')).toBeInTheDocument();
+            expect(screen.getAllByRole('gridcell').length).toBe(100);
+        });
     });
 
-    test('resetting the game', () => {
-        const { getByTestId, getAllByRole } = render(<BattleContainer />);
-        const resetButton = getByTestId('reset_btn');
-        const gridCells = getAllByRole('gridcell');
+    test('finishs the game when all ships are sunk', () => {
+        render(<BattleContainer />);
 
-        fireEvent.click(gridCells[0]);
-        fireEvent.click(resetButton);
-        expect(getByTestId('steps')).toHaveTextContent('Steps: 0'); // Steps should be reset to 0
+        // click all grid cells
+        screen.getAllByRole('gridcell').forEach(cell => {
+            fireEvent.click(cell);
+        });
+
+        // check if game is finished
+        expect(screen.getByTestId('finish')).toHaveTextContent('finish');
+
     });
 
-    test('verify that targeting a square results in the correct outcome(O, X)', () => {
-        const { getAllByRole } = render(<BattleContainer />);
-        const gridCells = getAllByRole('gridcell');
+    test('resets the game', () => {
+        render(<BattleContainer />);
 
-        fireEvent.click(gridCells[0]);
-        expect(gridCells[0].innerHTML).toMatch(/O|X/);
+        // click a grid cell and then reset the game
+        fireEvent.click(screen.getAllByRole('gridcell')[0]);
+        fireEvent.click(screen.getByTestId('reset_btn'));
+
+        // check if steps are reset to 0
+        expect(screen.getByTestId('steps')).toHaveTextContent('Steps: 0');
+    });
+
+    test('verifies that targeting a square results in the correct outcome (O or X)', () => {
+        render(<BattleContainer />);
+
+        // click a grid cell and check if it contains O or X
+        fireEvent.click(screen.getAllByRole('gridcell')[0]);
+        expect(screen.getAllByRole('gridcell')[0].innerHTML).toMatch(/O|X/);
     })
 
 });
