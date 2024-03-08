@@ -1,20 +1,27 @@
-export const columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-export const rows = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const BOARD_SIZE = Math.pow(parseInt(process.env.REACT_APP_ROW_CNT), 2) || 100;
+const colLength = parseInt(process.env.REACT_APP_ROW_CNT) || 10;
+const BOARD_SIZE = Math.pow(colLength, 2);
+const BATTLE_SHIP_COUNT = parseInt(process.env.REACT_APP_BATTLESHIP_CNT) || 1;
+const DESTROYER_COUNT = parseInt(process.env.REACT_APP_DESTROYER_CNT) || 2;
+
 const Direction = {
     HORIZONTAL: 1,
     VERTICAL: 10,
 };
 
 export function generateShips() {
-    const battleship = generateShip('Battleship', []);
-    const destroyer1 = generateShip('Destroyer', battleship.positions);
-    const destroyer2 = generateShip('Destroyer', [...battleship.positions, ...destroyer1.positions]);
-    return [
-        battleship,
-        destroyer1,
-        destroyer2
-    ]
+    let shipInfos = [];
+    let positions = [];
+    for (let i = 0; i < BATTLE_SHIP_COUNT; i++) {
+        const battleship = generateShip('Battleship', positions);
+        shipInfos.push(battleship);
+        positions = [...positions, ...battleship.positions];
+    }
+    for (let i = 0; i < DESTROYER_COUNT; i++) {
+        const destroyer = generateShip('Destroyer', positions);
+        shipInfos.push(destroyer);
+        positions = [...positions, ...destroyer.positions];
+    }
+    return shipInfos;
 }
 
 function generateShip(type, positionsTaken) {
@@ -39,7 +46,7 @@ function generateShipPositions(type, positionsTaken) {
 }
 
 function shouldMoveToLeft(startPosition, direction) {
-    return ((startPosition % 10) > (columns.length / 2))
+    return ((startPosition % 10) > (colLength.length / 2))
         && (direction === Direction.HORIZONTAL);
 }
 
@@ -59,11 +66,6 @@ export function initShots() {
 export function isShipHit(ship, shot) {
     const isShipHit = ship.positions.find((position) => position === shot);
     return isShipHit;
-}
-
-export function isShipShunk(ship, shots) {
-    const isShipShunk = ship.positions.every((position) => shots[position] === 'O');
-    return isShipShunk;
 }
 
 export function hasGameFinished(ships, shots) {
