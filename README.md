@@ -52,7 +52,7 @@ The application was created with create-react-app, and Node.js version used is 1
 
     Open your web browser and navigate to:
 
-    `http://localhost:3000`
+    http://localhost:3000
 
 ## Test
 
