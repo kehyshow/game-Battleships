@@ -51,7 +51,10 @@ const BattleContainer = () => {
 
     return (
         <div className="container mx-auto py-5 flex flex-col items-center">
-            <p className="text-4xl text-left w-full">Battle Ship</p>
+            <div className="flex items-center self-start">
+                <img className="w-12 h-12 mr-2" src="logo192.png" />
+                <p className="text-4xl text-left w-full">Battleship</p>
+            </div>
             <div className="flex gap-24 mt-20 self-start pl-48">
                 <div data-testid="gridcell" className="flex">
                     <div className="grid grid-cols-1 w-fit">
