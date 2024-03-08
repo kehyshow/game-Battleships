@@ -20,26 +20,26 @@ The application was created with create-react-app and node version is 20.11.1.
 
 2. Navigate to the project directory:
 
-cd ship_battle
+    cd ship_battle
 
 3. Install dependencies:
 
-npm install
+    npm install
 
 4. Place .env file
 
-.env file should contian below infos:
-REACT_APP_ROW_CNT: number (number of row and col)
-REACT_APP_BATTLESHIP_CNT: number (battleShip count)
-REACT_APP_DESTROYER_CNT: number (destroyer count)
+    .env file should contian below infos:
+    REACT_APP_ROW_CNT: number (number of row and col)
+    REACT_APP_BATTLESHIP_CNT: number (battleShip count)
+    REACT_APP_DESTROYER_CNT: number (destroyer count)
 
 4. Start the development server:
 
-npm start
+    npm start
 
 5. Check the live server:
 
-http://localhost:3000
+    http://localhost:3000
 
 ## Test
 
