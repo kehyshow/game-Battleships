@@ -14,36 +14,55 @@ The application was created with create-react-app and node version is 20.11.1.
 
 ## Installation
 
-1. Clone the repository:
-
+1. **Clone the repository:**
+   
+    ```bash
     git repo:
+    ```
+    
+2. **Navigate to the project directory:**
 
-2. Navigate to the project directory:
-
+    ```bash
     cd ship_battle
+    ```
 
-3. Install dependencies:
+3. **Install dependencies:**
 
+    ```bash
     npm install
+    ```
 
-4. Place .env file
+4. **Place .env file**
 
-    .env file should contian below infos:
-    REACT_APP_ROW_CNT: number (number of row and col)
-    REACT_APP_BATTLESHIP_CNT: number (battleShip count)
-    REACT_APP_DESTROYER_CNT: number (destroyer count)
+    Create a `.env` file in the project directory with the following content:
 
-4. Start the development server:
+    ```plaintext
+    REACT_APP_ROW_CNT=<number>    # Number of rows and columns
+    REACT_APP_BATTLESHIP_CNT=<number>    # Number of battleships
+    REACT_APP_DESTROYER_CNT=<number>    # Number of destroyers
+    ```
 
+5. **Start the development server:**
+
+    ```bash
     npm start
+    ```
 
-5. Check the live server:
+6. **Check the live server:**
 
+    Open your web browser and navigate to:
+
+    ```
     http://localhost:3000
+    ```
 
 ## Test
 
-npm test
+    To run tests, execute the following command in your terminal:
+
+    ```bash
+    npm test
+    ```
 
 You can test some features in the following:
 - check if the gameboard has been initialized correctly
