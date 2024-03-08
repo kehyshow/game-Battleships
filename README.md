@@ -2,7 +2,7 @@
 
 A single player game of Battleships built with React.
 
-![Battleships](public/assets/LiveDemo.png)
+![Battleships](public/LiveDemo.png)
 
 ## Table of Contents
 
