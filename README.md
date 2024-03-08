@@ -1,6 +1,6 @@
-# ship_battle
+# game - Battleships
 
-simple battleship react application for single play
+A single player game of Battleships built with React.
 
 ## Table of Contents
 
@@ -43,6 +43,11 @@ http://localhost:3000
 
 ## Test
 
-You can test some features:
-
 npm test
+
+You can test some features in the following:
+- check if the gameboard has been initialized correctly
+- check if game finished when all ships are sunk
+- check if reset function works in a correct way
+- check if targetting a square results in the correct outcome
+
