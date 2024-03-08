@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import ShipSector from "../components/ShipSector";
+import ShootPoint from "../components/ShootPoint";
 import { generateShips, hasGameFinished, initShots, isShipHit } from "../utils/util";
-import BattleShipSector from "../components/BattleShipSector";
-import DestroyerSector from "../components/DestroyerSector";
+import { BattleShipSector, DestroyerSector } from "../components/BattleShipAndDestroySectors";
 
 const BattleContainer = () => {
     const [sections, setSections] = useState(initShots());
@@ -14,23 +13,35 @@ const BattleContainer = () => {
         setShips(generateShips());
     }, []);
 
+    // useEffect(() => {
+    //     if (isFinish && typeof window !== 'undefined') {
+    //         window.alert(`Game Finished! steps: ${step}`);
+    //     }
+    // }, [isFinish])
+
     useEffect(() => {
-        if (isFinish && typeof window !== 'undefined') {
-            window.alert(`Game Finished! steps: ${step}`);
+        if (isFinish) {
+            setTimeout(() => {
+                alert(`Game Finished! steps: ${step}`);
+            }, 1000)
         }
-    }, [isFinish])
+    })
 
     const Reset = () => {
         setSections(initShots());
+        setShips(generateShips());
         setFinish(false);
         setStep(0);
     }
 
     const shot = (position) => {
-        let cur = [...sections];
         if (isFinish || sections[position] === "O") return;
-        setStep(prev => prev + 1);
-        ships.map((ship) => {
+
+        const cur = [...sections];
+        if (sections[position] !== "O" && sections[position] !== "X")
+            setStep(step + 1);
+
+        ships.forEach((ship) => {
             if (isShipHit(ship, position)) {
                 cur[position] = "O";
                 if (hasGameFinished(ships, cur)) {
@@ -38,6 +49,7 @@ const BattleContainer = () => {
                 }
             }
         });
+
         if (cur[position] === '~') {
             cur[position] = "X";
         }
@@ -58,7 +70,7 @@ const BattleContainer = () => {
                     </div>
                     <div className="flex flex-col">
                         <div className="grid items-center grid-cols-10 w-full">
-                            {(new Array(10).fill(0)).map((value, index) => (
+                            {(new Array(10).fill(0)).map((_, index) => (
                                 <div className="ship-sector flex items-center justify-center" key={`row-id-${index}`}>
                                     {index + 1}
                                 </div>
@@ -67,7 +79,7 @@ const BattleContainer = () => {
                         <div className="grid items-center grid-cols-10 w-fit">
                             {sections.map((section, index) => (
                                 <div onClick={() => shot(index)} key={`sector-${index}`} className="border" role="gridcell">
-                                    <ShipSector value={section} />
+                                    <ShootPoint value={section} />
                                 </div>
                             ))}
                         </div>

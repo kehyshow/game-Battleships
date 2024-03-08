@@ -46,7 +46,7 @@ function generateShipPositions(type, positionsTaken) {
 }
 
 function shouldMoveToLeft(startPosition, direction) {
-    return ((startPosition % 10) > (colLength.length / 2))
+    return ((startPosition % 10) > (colLength / 2))
         && (direction === Direction.HORIZONTAL);
 }
 
