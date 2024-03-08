@@ -59,6 +59,11 @@ function shouldMoveBackwards(startPosition, direction) {
     return shouldMoveToLeft(startPosition, direction) || shouldMoveToUp(startPosition, direction);
 }
 
+function isShipShunk(ship, shots) {
+    const isShipShunk = ship.positions.every((position) => shots[position] === 'O');
+    return isShipShunk;
+}
+
 export function initShots() {
     return Array(BOARD_SIZE).fill("~");
 }
