@@ -10,7 +10,7 @@ A single player game of Battleships built with React.
 
 ## Requirement
 
-The application was created with create-react-app and node version is 20.11.1.
+The application was created with create-react-app, and Node.js version used is 18.18.2.
 
 ## Installation
 
@@ -52,21 +52,19 @@ The application was created with create-react-app and node version is 20.11.1.
 
     Open your web browser and navigate to:
 
-    ```
-    http://localhost:3000
-    ```
+    `http://localhost:3000`
 
 ## Test
 
-    To run tests, execute the following command in your terminal:
+   To run tests, execute the following command in your terminal:
 
-    ```bash
-    npm test
-    ```
+   ```bash
+   npm test
+   ```
 
-You can test some features in the following:
-- check if the gameboard has been initialized correctly
-- check if game finished when all ships are sunk
-- check if reset function works in a correct way
-- check if targetting a square results in the correct outcome
+   You can test the following features:
+   - check if the gameboard has been initialized correctly
+   - check if game finished when all ships are sunk
+   - check if reset function works in a correct way
+   - check if targetting a square results in the correct outcome
 
