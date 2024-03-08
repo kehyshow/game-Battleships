@@ -29,11 +29,10 @@ const BattleContainer = () => {
     }
 
     const shot = (position) => {
-        if (isFinish || sections[position] === "O") return;
+        if (isFinish || sections[position] === "O" || sections[position] === "X") return;
 
         const cur = [...sections];
-        if (sections[position] !== "O" && sections[position] !== "X")
-            setStep(step + 1);
+        setStep(step + 1);
 
         ships.forEach((ship) => {
             if (isShipHit(ship, position)) {
