@@ -6,9 +6,10 @@ const ShootPoint = ({ value }) => {
                 ship-sector
                 border cursor-pointer 
                 flex items-center justify-center
-                ${(value === 'S' || value === '~') ? "blur-sm" : value === 'O' ? "bg-green-300" : ""}`}
+                ${value === '~' ? "blur-sm" : value === 'O' ? "bg-green-300" : ""}
+                ${value === 'O' ? "text-red-700" : value === 'X' ? "text-blue-700" : ""}`}
         >
-            {value === 'S' ? "~" : value}
+            {value}
         </div>
     )
 }

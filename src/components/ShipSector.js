@@ -1,5 +1,4 @@
 import React from 'react';
-import SunkImage from "../images/Sunk.png";
 
 const ShipSector = ({ shipType, shipImage, shipName, shipLength, position, sections }) => {
     const hitCount = position?.reduce((acc, cur) => {
@@ -17,7 +16,7 @@ const ShipSector = ({ shipType, shipImage, shipName, shipLength, position, secti
                         <div className={`w-4 h-4 ${hitCount > index ? "bg-slate-700" : "bg-slate-300"}`} key={`${shipType}-health-${index}`}> </div>
                     ))}
                 </div>
-                {hitCount === shipLength ? <img className={`absolute w-10 h-10 ${shipType === "battleship" ? "left-14" : "left-8"} top-0`} src={SunkImage} alt='SunkImage' /> : ""}
+                {hitCount === shipLength ? <img className={`absolute w-10 h-10 ${shipType === "battleship" ? "left-14" : "left-8"} top-0`} src={'assets/images/Sunk.png'} alt='SunkImage' /> : ""}
             </div>
         </div>
     )
