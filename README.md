@@ -1,6 +1,6 @@
-# ship_battle
+# game - Battleships
 
-simple battleship react application for single play
+A single player game of Battleships built with React.
 
 ## Table of Contents
 
@@ -10,39 +10,61 @@ simple battleship react application for single play
 
 ## Requirement
 
-The application was created with create-react-app and node version is 20.11.1.
+The application was created with create-react-app, and Node.js version used is 18.18.2.
 
 ## Installation
 
-1. Clone the repository:
-
+1. **Clone the repository:**
+   
+    ```bash
     git repo:
+    ```
+    
+2. **Navigate to the project directory:**
 
-2. Navigate to the project directory:
+    ```bash
+    cd ship_battle
+    ```
 
-cd ship_battle
+3. **Install dependencies:**
 
-3. Install dependencies:
+    ```bash
+    npm install
+    ```
 
-npm install
+4. **Place .env file**
 
-4. Place .env file
+    Create a `.env` file in the project directory with the following content:
 
-.env file should contian below infos:
-REACT_APP_ROW_CNT: number (number of row and col)
-REACT_APP_BATTLESHIP_CNT: number (battleShip count)
-REACT_APP_DESTROYER_CNT: number (destroyer count)
+    ```plaintext
+    REACT_APP_ROW_CNT=<number>    # Number of rows and columns
+    REACT_APP_BATTLESHIP_CNT=<number>    # Number of battleships
+    REACT_APP_DESTROYER_CNT=<number>    # Number of destroyers
+    ```
 
-4. Start the development server:
+5. **Start the development server:**
 
-npm start
+    ```bash
+    npm start
+    ```
 
-5. Check the live server:
+6. **Check the live server:**
 
-http://localhost:3000
+    Open your web browser and navigate to:
+
+    http://localhost:3000
 
 ## Test
 
-You can test some features:
+   To run tests, execute the following command in your terminal:
 
-npm test
+   ```bash
+   npm test
+   ```
+
+   You can test the following features:
+   - check if the gameboard has been initialized correctly
+   - check if game finished when all ships are sunk
+   - check if reset function works in a correct way
+   - check if targetting a square results in the correct outcome
+
